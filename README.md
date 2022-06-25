@@ -34,3 +34,11 @@ npm install next@12.1.5
    - その結果、バグを発見するためのテストに対する信頼性が失われる
 
 - [Effective Snapshot Testing](https://kentcdodds.com/blog/effective-snapshot-testing)
+
+## Data Fetching Strategy
+
+- Static
+- SG
+- SSR
+- CSR
+- ISR
