@@ -20,6 +20,10 @@ export class Ok<T> {
     return ok(mapper(this.value));
   }
 
+  mapErr(_mapper: unknown): Ok<T> {
+    return this;
+  }
+
   andThen<T2>(mapper: (value: T) => Ok<T2>): Ok<T2>;
   andThen<E2>(mapper: (value: T) => Err<E2>): Result<T, E2>;
   andThen<T2, E2>(mapper: (value: T) => Result<T2, E2>): Result<T2, E2>;
@@ -49,6 +53,10 @@ export class Err<E> {
 
   map(_mapper: unknown): Err<E> {
     return this;
+  }
+
+  mapErr<E2>(mapper: (err: E) => E2): Err<E2> {
+    return err(mapper(this.error));
   }
 
   andThen(_mapper: unknown): Err<E> {
