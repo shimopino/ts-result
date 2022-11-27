@@ -1,21 +1,28 @@
-export type Ok<T> = { ok: true; value: T };
-export type Err<E> = { ok: false; error: E };
 export type Result<T, E> = Ok<T> | Err<E>;
 
-export const ok = <T>(value: T): Ok<T> => {
-  return {
-    ok: true,
-    value,
-  };
-};
+export const ok = <T>(value: T) => new Ok(value);
+export const err = <E>(error: E) => new Err(error);
 
-export const err = <E>(error: E): Err<E> => {
-  return {
-    ok: false,
-    error,
-  };
-};
+export class Ok<T> {
+  constructor(readonly value: T) {}
 
-export const isOk = <T, E>(input: Result<T, E>): input is Ok<T> => input.ok;
+  isOk(): this is Ok<T> {
+    return true;
+  }
 
-export const isErr = <T, E>(input: Result<T, E>): input is Err<E> => !input.ok;
+  isErr(): this is Err<never> {
+    return false;
+  }
+}
+
+export class Err<E> {
+  constructor(readonly error: E) {}
+
+  isOk(): this is Ok<never> {
+    return false;
+  }
+
+  isErr(): this is Err<E> {
+    return true;
+  }
+}
