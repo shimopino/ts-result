@@ -1,4 +1,4 @@
-import { err } from '../src/result';
+import { err } from '../src/ClassResult/result';
 
 it('err', () => {
   const errResult = err('err');

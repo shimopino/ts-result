@@ -1,4 +1,4 @@
-import { ok } from '../src/result';
+import { ok } from '../src/ClassResult/result';
 
 it('ok', () => {
   const okResult = ok('test');

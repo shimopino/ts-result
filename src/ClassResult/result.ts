@@ -6,7 +6,7 @@ export const ok = <T>(value: T) => new Ok(value);
 export const err = <E>(error: E) => new Err(error);
 
 export class Ok<T> {
-  constructor(private readonly value: T) {}
+  constructor(readonly value: T) {}
 
   isOk(): this is Ok<T> {
     return true;
@@ -41,7 +41,7 @@ export class Ok<T> {
 }
 
 export class Err<E> {
-  constructor(private readonly error: E) {}
+  constructor(readonly error: E) {}
 
   isOk(): this is Ok<never> {
     return false;

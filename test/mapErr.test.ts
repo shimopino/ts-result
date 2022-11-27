@@ -1,4 +1,4 @@
-import { err, ok } from '../src/result';
+import { err, ok } from '../src/ClassResult/result';
 
 it('[map] ok', () => {
   // @ts-expect-error OkインスタンスへのmapErrは型エラーになるので無視
