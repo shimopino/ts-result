@@ -20,8 +20,19 @@ export class Ok<T> {
     return ok(mapper(this.value));
   }
 
+  andThen<T2>(mapper: (value: T) => Ok<T2>): Ok<T2>;
+  andThen<E2>(mapper: (value: T) => Err<E2>): Result<T, E2>;
+  andThen<T2, E2>(mapper: (value: T) => Result<T2, E2>): Result<T2, E2>;
+  andThen<T2, E2>(mapper: (value: T) => Result<T2, E2>): Result<T2, E2> {
+    return mapper(this.value);
+  }
+
   unwrap(): T {
     return this.value;
+  }
+
+  unwrapErr(): never {
+    throw new Error(`Tried to unwrap Error: ${toString(this.value)}`);
   }
 }
 
@@ -40,7 +51,15 @@ export class Err<E> {
     return this;
   }
 
+  andThen(_mapper: unknown): Err<E> {
+    return this;
+  }
+
   unwrap(): never {
     throw new Error(`Tried to unwrap Error: ${toString(this.error)}`);
+  }
+
+  unwrapErr(): E {
+    return this.error;
   }
 }
