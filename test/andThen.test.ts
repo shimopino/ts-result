@@ -31,7 +31,7 @@ describe('[andThen] result', () => {
       return ok(`${value} bye`);
     });
 
-    expect(result.unwrap()).toBe('hello test bye');
+    expect(result._unwrap()).toBe('hello test bye');
   });
 
   it('err', () => {
@@ -40,6 +40,6 @@ describe('[andThen] result', () => {
       return ok(`${value} bye`);
     });
 
-    expect(result.unwrapErr()).toEqual({ type: 'EmptyStringError' });
+    expect(result._unwrapErr()).toEqual({ type: 'EmptyStringError' });
   });
 });

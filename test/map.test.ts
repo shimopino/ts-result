@@ -19,17 +19,15 @@ describe('[map] result', () => {
 
   it('ok', () => {
     const name = 'test';
-    const result = hello(name);
+    const result = hello(name).map((value) => `${value} bye`);
 
-    expect(result.unwrap()).toBe('hello test');
+    expect(result._unwrap()).toBe('hello test bye');
   });
 
   it('err', () => {
     const name = '';
-    const result = hello(name);
+    const result = hello(name).map((value) => `${value} bye`);
 
-    expect(() => result.unwrap()).toThrow(
-      'Tried to unwrap Error: {"type":"EmptyStringError"}'
-    );
+    expect(result._unwrapErr()).toEqual({ type: 'EmptyStringError' });
   });
 });

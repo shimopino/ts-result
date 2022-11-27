@@ -27,11 +27,11 @@ export class Ok<T> {
     return mapper(this.value);
   }
 
-  unwrap(): T {
+  _unwrap(): T {
     return this.value;
   }
 
-  unwrapErr(): never {
+  _unwrapErr(): never {
     throw new Error(`Tried to unwrap Error: ${toString(this.value)}`);
   }
 }
@@ -55,11 +55,11 @@ export class Err<E> {
     return this;
   }
 
-  unwrap(): never {
+  _unwrap(): never {
     throw new Error(`Tried to unwrap Error: ${toString(this.error)}`);
   }
 
-  unwrapErr(): E {
+  _unwrapErr(): E {
     return this.error;
   }
 }
