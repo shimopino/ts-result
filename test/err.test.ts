@@ -4,5 +4,5 @@ it('err', () => {
   const errResult = err('err');
 
   expect(errResult.isErr()).toBe(true);
-  expect(errResult.error).toBe('err');
+  expect(errResult._unwrapErr()).toBe('err');
 });

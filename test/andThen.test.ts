@@ -6,7 +6,7 @@ it('[andThen] ok', () => {
   });
 
   expect(result.isOk()).toBe(true);
-  expect(result.value).toBe('[+] test');
+  expect(result._unwrap()).toBe('[+] test');
 });
 
 it('[andThen] err', () => {
@@ -16,7 +16,7 @@ it('[andThen] err', () => {
   });
 
   expect(result.isErr()).toBe(true);
-  expect(result.error).toBe('err');
+  expect(result._unwrapErr()).toBe('err');
 });
 
 describe('[andThen] result', () => {

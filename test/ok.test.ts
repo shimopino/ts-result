@@ -4,5 +4,5 @@ it('ok', () => {
   const okResult = ok('test');
 
   expect(okResult.isOk()).toBe(true);
-  expect(okResult.value).toBe('test');
+  expect(okResult._unwrap()).toBe('test');
 });

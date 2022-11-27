@@ -3,12 +3,12 @@ import { err, ok } from '../src/result';
 it('[map] ok', () => {
   // @ts-expect-error OkインスタンスへのmapErrは型エラーになるので無視
   const result = ok('test').mapErr((value) => `[+] ${value}`);
-  expect(result.value).toBe('test');
+  expect(result._unwrap()).toBe('test');
 });
 
 it('[map] err', () => {
   const result = err('err').mapErr((error) => `[+] ${error}`);
-  expect(result.error).toBe('[+] err');
+  expect(result._unwrapErr()).toBe('[+] err');
 });
 
 describe('[map] result', () => {
