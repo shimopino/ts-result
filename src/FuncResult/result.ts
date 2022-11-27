@@ -23,3 +23,15 @@ export const isOk = <T, E>(input: Result<T, E>): input is Ok<T> => {
 export const isErr = <T, E>(input: Result<T, E>): input is Err<E> => {
   return !input.ok;
 };
+
+export const _unwrap = <T, E>(input: Result<T, E>) => {
+  if (isErr(input)) throw new Error('cannot unwrap Error');
+
+  return input.value;
+};
+
+export const _unwrapErr = <T, E>(input: Result<T, E>) => {
+  if (isOk(input)) throw new Error(`cannot unwrapErr ${input.value}`);
+
+  return input.error;
+};
