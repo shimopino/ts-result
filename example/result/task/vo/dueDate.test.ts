@@ -1,7 +1,8 @@
 import { _unwrap, _unwrapErr } from '../../../../src/FuncResult';
+import { createDate } from '../../testUtils/createDate';
 import { validateDueDate } from './dueDate';
 
-const mockDate = new Date('2022-12-01');
+const mockDate = createDate('2022-12-01');
 jest.useFakeTimers().setSystemTime(mockDate);
 
 it('[yyyy-MM-dd]で現在よりも先の日付を締切日として設定できる', () => {
