@@ -1,4 +1,4 @@
-import { DomainError } from '../DomainError';
+import { DomainError } from '../../DomainError';
 import { validateDueDate } from './dueDate';
 
 const mockDate = new Date('2022-12-01');

@@ -1,7 +1,7 @@
 import { DueDate, validateDueDate } from './dueDate';
 import { Title, validateTitle } from './title';
 import { isAfter } from 'date-fns';
-import { DomainError } from '../DomainError';
+import { DomainError } from '../../DomainError';
 
 export type ValidateSubTask = (
   subTasks: { title: string; dueDate: string }[],

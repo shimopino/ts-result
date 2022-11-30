@@ -1,5 +1,5 @@
-import { Branded } from '../../brand';
-import { DomainError } from '../DomainError';
+import { Branded } from '../../../brand';
+import { DomainError } from '../../DomainError';
 
 export type Title = Branded<string, 'Title'>;
 

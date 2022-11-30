@@ -1,4 +1,4 @@
-import { DomainError } from '../DomainError';
+import { DomainError } from '../../DomainError';
 import { validateTitle } from './title';
 
 it('タイトルを設定できる', () => {

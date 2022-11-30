@@ -1,4 +1,5 @@
 import { DueDate } from './task/dueDate';
+import { TASK_STATUS } from './task/TaskStatus';
 import { Title } from './task/title';
 
 export type UnvalidatedCreateTask = {
@@ -14,9 +15,21 @@ export type UnvalidatedCreateTask = {
 export type ValidatedCreateTask = {
   kind: 'ValidatedCreateTask';
   title: Title;
-  subTask: {
+  subTasks: {
     title: Title;
     dueDate: DueDate;
   }[];
   dueDate: DueDate;
+};
+
+export type CreatedTask = {
+  kind: 'CreatedTask';
+  title: Title;
+  subTasks: {
+    title: Title;
+    dueDate: DueDate;
+  }[];
+  dueDate: DueDate;
+  status: typeof TASK_STATUS.TODO;
+  postphoneCount: 0;
 };

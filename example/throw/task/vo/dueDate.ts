@@ -1,6 +1,6 @@
-import { Branded } from '../../brand';
+import { Branded } from '../../../brand';
 import { parse, isValid } from 'date-fns';
-import { DomainError } from '../DomainError';
+import { DomainError } from '../../DomainError';
 
 export type DueDate = Branded<Date, 'DueDate'>;
 
