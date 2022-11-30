@@ -1,23 +1,42 @@
+import { Result } from '../../../../src/FuncResult';
+import { pipeWith } from '../../../../src/FuncResult/pipeWith';
+import { Result as ResultType } from '../../../../src/FuncResult/result';
 import { UnvalidatedCreateTask, ValidatedCreateTask } from '../../types';
-import { validateDueDate } from '../vo/dueDate';
-import { validateSubTask } from '../vo/subTask';
-import { validateTitle } from '../vo/title';
+import { validateDueDate, ValidateDueDateError } from '../vo/dueDate';
+import { validateSubTask, ValidateSubTaskError } from '../vo/subTask';
+import { validateTitle, ValidateTitleError } from '../vo/title';
 
+export type ValidateTaskError =
+  | ValidateTitleError
+  | ValidateDueDateError
+  | ValidateSubTaskError;
 export type ValidateTask = (
   unvalidatedTask: UnvalidatedCreateTask
-) => ValidatedCreateTask;
+) => ResultType<ValidatedCreateTask, ValidateTaskError>;
 
+// @ts-expect-error combineの型修正
 export const validateTask: ValidateTask = (unvalidatedTask) => {
   const { title, dueDate, subTasks } = unvalidatedTask;
 
   const validatedTitle = validateTitle(title);
   const validatedDueDate = validateDueDate(dueDate);
-  const validatedSubTasks = validateSubTask(subTasks, validatedDueDate);
+  const validatedSubTasks = pipeWith(
+    validatedDueDate,
+    Result.andThen((dueDate) => {
+      return validateSubTask(subTasks, dueDate);
+    })
+  );
 
-  return {
-    kind: 'ValidatedCreateTask',
-    title: validatedTitle,
-    dueDate: validatedDueDate,
-    subTasks: validatedSubTasks,
-  };
+  return pipeWith(
+    // @ts-expect-error combineの型修正
+    Result.combine([validatedTitle, validatedDueDate, validatedSubTasks]),
+    Result.map(([title, dueDate, subTasks]) => {
+      return {
+        kind: 'ValidatedCreateTask',
+        title,
+        dueDate,
+        subTasks,
+      };
+    })
+  );
 };
