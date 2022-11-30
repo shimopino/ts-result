@@ -1,4 +1,5 @@
-import { pipe } from '../../../src/FuncResult/pipe';
+import { ok, Result } from '../../../src/FuncResult';
+import { pipeWith } from '../../../src/FuncResult/pipeWith';
 import { createTask } from '../task/handlers/createTask';
 import { validateTask } from '../task/handlers/validateTask';
 import { UnvalidatedCreateTask } from '../types';
@@ -18,8 +19,11 @@ export const createTaskUseCase = (payload: Payload) => {
     ...payload,
   };
 
-  const workflow = pipe(validateTask, createTask);
-  const result = workflow(input);
+  const result = pipeWith(
+    ok(input),
+    Result.andThen(validateTask),
+    Result.andThen(createTask)
+  );
 
   return result;
 };

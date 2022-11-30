@@ -1,3 +1,4 @@
+import { _unwrap } from '../../../src/FuncResult';
 import { createDate } from '../testUtils/createDate';
 import { createTaskUseCase } from './createTask';
 
@@ -16,7 +17,7 @@ it('TODOタスクを作成することができる', () => {
 
   const result = createTaskUseCase(payload);
 
-  expect(result).toEqual({
+  expect(_unwrap(result)).toEqual({
     kind: 'CreatedTask',
     title: 'test1',
     dueDate: createDate('2022-12-10'),

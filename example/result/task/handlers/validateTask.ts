@@ -16,6 +16,7 @@ export type ValidateTask = (
 
 // @ts-expect-error combineの型修正
 export const validateTask: ValidateTask = (unvalidatedTask) => {
+  console.log(unvalidatedTask);
   const { title, dueDate, subTasks } = unvalidatedTask;
 
   const validatedTitle = validateTitle(title);
