@@ -26,9 +26,9 @@ export function pipe<A extends unknown[], B, C, D, E, F>(
   ef: (e: E) => F
 ): (...args: A) => F;
 export function pipe(...fns: UnknownFunction[]): UnknownFunction {
-  return (...initialParams: unknown[]): unknown =>
+  return <T>(...initialParams: T[]): unknown =>
     fns.reduce<unknown>((value, fn, index) => {
-      const params = index === 0 ? (value as unknown[]) : [value];
+      const params = index === 0 ? (value as T[]) : [value];
       return fn(...params);
     }, initialParams);
 }
