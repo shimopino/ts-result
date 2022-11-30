@@ -4,6 +4,7 @@ import { andThen } from './andThen';
 import { apply } from './apply';
 import { traverseA } from './traverseA';
 import { traverseM } from './traverseM';
+import { combine } from './combine';
 export * from './result';
 
 export const Result = {
@@ -13,4 +14,5 @@ export const Result = {
   apply,
   traverseA,
   traverseM,
+  combine,
 };
