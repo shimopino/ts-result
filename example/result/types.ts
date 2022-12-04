@@ -24,6 +24,7 @@ export type ValidatedCreateTask = {
 
 export type CreatedTask = {
   kind: 'CreatedTask';
+  id: string;
   title: Title;
   subTasks: {
     title: Title;
