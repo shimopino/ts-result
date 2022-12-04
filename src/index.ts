@@ -1,4 +1,5 @@
 import { map } from './map';
+import { mapAsync } from './mapAsync';
 import { mapErr } from './mapErr';
 import { andThen } from './andThen';
 import { apply } from './apply';
@@ -19,6 +20,7 @@ export {
 
 export const Result = {
   map,
+  mapAsync,
   mapErr,
   andThen,
   apply,
