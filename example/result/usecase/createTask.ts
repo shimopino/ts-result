@@ -1,5 +1,5 @@
-import { ok, Result } from '../../../src/FuncResult';
-import { pipeWith } from '../../../src/FuncResult/pipeWith';
+import { ok, Result } from '../../../src';
+import { pipeWith } from '../../../src/pipeWith';
 import { createTask } from '../task/handlers/createTask';
 import { validateTask } from '../task/handlers/validateTask';
 import { UnvalidatedCreateTask } from '../types';

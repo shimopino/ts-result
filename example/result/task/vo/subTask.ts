@@ -1,13 +1,8 @@
 import { DueDate, validateDueDate, ValidateDueDateError } from './dueDate';
 import { Title, validateTitle, ValidateTitleError } from './title';
 import { isAfter } from 'date-fns';
-import { Result } from '../../../../src/FuncResult';
-import {
-  ok,
-  err,
-  Result as ResultType,
-} from '../../../../src/FuncResult/result';
-import { pipeWith } from '../../../../src/FuncResult/pipeWith';
+import { ok, err, ResultType, Result } from '../../../../src';
+import { pipeWith } from '../../../../src/pipeWith';
 
 export type ValidateSubTaskError =
   | ValidateTitleError

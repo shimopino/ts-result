@@ -1,4 +1,4 @@
-import { _unwrap } from '../../../src/FuncResult';
+import { _unwrap } from '../../../src';
 import { createDate } from '../testUtils/createDate';
 import { createTaskUseCase } from './createTask';
 

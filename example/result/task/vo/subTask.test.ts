@@ -1,7 +1,7 @@
 import { DueDate } from './dueDate';
 import { validateSubTask } from './subTask';
 import { createDate } from '../../testUtils/createDate';
-import { _unwrap, _unwrapErr } from '../../../../src/FuncResult';
+import { _unwrap, _unwrapErr } from '../../../../src';
 
 const mockDate = createDate('2022-12-01');
 jest.useFakeTimers().setSystemTime(mockDate);

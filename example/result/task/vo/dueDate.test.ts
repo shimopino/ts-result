@@ -1,4 +1,4 @@
-import { _unwrap, _unwrapErr } from '../../../../src/FuncResult';
+import { _unwrap, _unwrapErr } from '../../../../src';
 import { createDate } from '../../testUtils/createDate';
 import { validateDueDate } from './dueDate';
 

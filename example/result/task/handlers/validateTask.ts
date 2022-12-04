@@ -1,6 +1,5 @@
-import { Result } from '../../../../src/FuncResult';
-import { pipeWith } from '../../../../src/FuncResult/pipeWith';
-import { Result as ResultType } from '../../../../src/FuncResult/result';
+import { Result, ResultType } from '../../../../src';
+import { pipeWith } from '../../../../src/pipeWith';
 import { UnvalidatedCreateTask, ValidatedCreateTask } from '../../types';
 import { validateDueDate, ValidateDueDateError } from '../vo/dueDate';
 import { validateSubTask, ValidateSubTaskError } from '../vo/subTask';

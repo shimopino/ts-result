@@ -1,6 +1,6 @@
 import { Branded } from '../../../brand';
 import { parse, isValid } from 'date-fns';
-import { err, ok, Result } from '../../../../src/FuncResult/result';
+import { err, ok, ResultType } from '../../../../src';
 
 export type DueDate = Branded<Date, 'DueDate'>;
 export type ValidateDueDateError =
@@ -9,7 +9,7 @@ export type ValidateDueDateError =
 
 export type ValidateDueDate = (
   dueDate: string
-) => Result<DueDate, ValidateDueDateError>;
+) => ResultType<DueDate, ValidateDueDateError>;
 
 export const validateDueDate: ValidateDueDate = (dueDate) => {
   const parsedDueDate = parse(dueDate, 'yyyy-MM-dd', new Date());

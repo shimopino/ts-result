@@ -1,4 +1,4 @@
-import { pipe } from '../../../src/FuncResult/pipe';
+import { pipe } from '../../../src/pipe';
 import { createTask } from '../task/handlers/createTask';
 import { validateTask } from '../task/handlers/validateTask';
 import { UnvalidatedCreateTask } from '../types';

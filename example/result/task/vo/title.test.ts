@@ -1,4 +1,4 @@
-import { _unwrap, _unwrapErr } from '../../../../src/FuncResult';
+import { _unwrap, _unwrapErr } from '../../../../src';
 import { validateTitle } from './title';
 
 it('タイトルを設定できる', () => {

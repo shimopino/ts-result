@@ -1,10 +1,10 @@
-import { ok, Result } from '../../../../src/FuncResult/result';
+import { ok, ResultType } from '../../../../src';
 import { CreatedTask, ValidatedCreateTask } from '../../types';
 import { TASK_STATUS } from '../vo/TaskStatus';
 
 export type CreateTask = (
   validatedTask: ValidatedCreateTask
-) => Result<CreatedTask, never>;
+) => ResultType<CreatedTask, never>;
 
 export const createTask: CreateTask = (validatedTask) => {
   return ok({
