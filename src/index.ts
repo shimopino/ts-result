@@ -17,6 +17,8 @@ export {
   Err,
   Result as ResultType,
 } from './result';
+export { pipe } from './pipe';
+export { pipeWith } from './pipeWith';
 
 export const Result = {
   map,
